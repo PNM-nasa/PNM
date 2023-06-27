@@ -45,7 +45,6 @@ for (const child of children) {
         child.classList.add("X");
         child.textContent = "X";
       }
-      player = !player;
       for (let i = 0; i < 3; i++) {
         if (children[i].textContent == children[i + 3].textContent &&
           children[i + 3].textContent == children[i + 6].textContent &&
@@ -88,6 +87,7 @@ for (const child of children) {
         ans = 0;
       }
       document.getElementById("win").textContent = ans.toString();
+      player = !player;
     }
   })
 }
