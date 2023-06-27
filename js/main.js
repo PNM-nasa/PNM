@@ -1,4 +1,6 @@
 var table = document.getElementById('table');
+var alert_text = document.getElementById('text');
+var alert_button = document.getElementById('play');
 var win = false;
 var win = 0;
 var draw = 0;
@@ -6,6 +8,19 @@ var lost = 0;
 var player = true;
 var i = 1;
 var ans = 0;
+var a = document.getElementById('alert');
+alert_text.textContent = "Ban demo thu nhat";
+alert_button.textContent = "play";
+alert_button.addEventListener("click", (event) => {
+  a.classList.add("hide");
+});
+var reset = function() {
+  for (const child of children) {
+    child.textContent = "+";
+    child.classList.remove("O");
+    child.classList.remove("X");
+  }
+}
 while (i <= 9) {
   let p = document.createElement("p");
   p.setAttribute('id', i.toString());
@@ -58,22 +73,21 @@ for (const child of children) {
       console.log(win)
       ans++;
       if (win) {
-        for (const child1 of children) {
-          win = false;
-          child1.textContent = "+";
-          child1.classList.remove("O");
-          child1.classList.remove("X");
-        }
+        win = false;
+        reset();
+        alert_text.textContent = ((player) ? "O" : "X") + " win";
+        alert_button.textContent = "play again";
+        a.classList.remove("hide");
         ans = 0;
       }
       if (ans == 9) {
-        for (const child1 of children) {
-
-          child1.textContent = "+";
-          child1.classList.remove("O");
-          child1.classList.remove("X")
-        }
+        alert("draw");
+        reset();
+        alert_text.textContent = "draw";
+        alert_button.textContent = "play again";
+        a.classList.remove("hide");
         ans = 0
+        document.getElementById("alert").textContent = "draw";
       }
       document.getElementById("win").textContent = ans.toString();
     }
