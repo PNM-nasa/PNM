@@ -1,14 +1,21 @@
-var table = document.getElementById('table');
-var alert_text = document.getElementById('text');
-var alert_button = document.getElementById('play');
+const table = document.getElementById('table');
+const alert_text = document.getElementById('text');
+const alert_button = document.getElementById('play');
+const a = document.getElementById('alert');
+const score_win = document.getElementById('win');
+const score_draw = document.getElementById('draw');
+const score_lost = document.getElementById('lost')
+
+var score = {
+  win: 0,
+  draw: 0,
+  lost: 0,
+};
 var win = false;
-var win = 0;
-var draw = 0;
-var lost = 0;
 var player = true;
 var i = 1;
 var ans = 0;
-var a = document.getElementById('alert');
+
 alert_text.textContent = "Ban demo thu nhat";
 alert_button.textContent = "play";
 alert_button.addEventListener("click", (event) => {
@@ -78,6 +85,7 @@ for (const child of children) {
         alert_button.textContent = "play again";
         a.classList.remove("hide");
         ans = 0;
+        score_win.textContent = ++score.win;
       }
       if (ans == 9) {
         reset();
@@ -85,8 +93,8 @@ for (const child of children) {
         alert_button.textContent = "play again";
         a.classList.remove("hide");
         ans = 0;
+        score_draw.textContent = ++score.draw;
       }
-      document.getElementById("win").textContent = ans.toString();
       player = !player;
     }
   })
