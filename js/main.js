@@ -81,13 +81,11 @@ for (const child of children) {
         ans = 0;
       }
       if (ans == 9) {
-        alert("draw");
         reset();
         alert_text.textContent = "draw";
         alert_button.textContent = "play again";
         a.classList.remove("hide");
-        ans = 0
-        document.getElementById("alert").textContent = "draw";
+        ans = 0;
       }
       document.getElementById("win").textContent = ans.toString();
     }
